@@ -33,13 +33,28 @@ class SinglyLinkedList {
         // Returns the length of the list
         // Implement in O(n) and in O(1) time complexity
 
-        // Your code here 
+        let counter = 0;
+        let current = this.head;
+
+        while(current){
+            counter++
+            current = current.next;
+        }
+        return counter
     }
 
     sumOfNodes() {
         // Returns the sum of the values of all the nodes
 
-        // Your code here 
+        let sum = 0;
+        let current = this.head;
+
+        while(current){
+            sum += current.value;
+            current = current.next
+        }
+
+        return sum;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -47,7 +62,7 @@ class SinglyLinkedList {
     averageValue() {
         // Returns the average value of all the nodes
 
-        // Your code here 
+        return this.sumOfNodes() / this.listLength()
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -55,19 +70,27 @@ class SinglyLinkedList {
     findNthNode(n) {
         // Returns the node at the nth index from the head
 
-        // Your code here 
+        let current = this.head;
+        let counter = 0;
+
+        while (current && counter < n){
+            current = current.next;
+            counter++;
+        }
+
+        return current;
 
         // Write your hypothesis on the time complexity of this method here
     }
-
     findMid() {
-        // Returns the middle node
-        // Implement this as a singly linked list then as a doubly linked list
-            // How do the implementation for singly and doubly vary if at all?
-
-        // Your code here 
-
-        // Write your hypothesis on the time complexity of this method here
+        let slow = this.head;
+        let fast = this.head;
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+        // Time Complexity: O(n)
     }
 
 
@@ -77,7 +100,17 @@ class SinglyLinkedList {
         // the original linked list reversed in place
             // Does the time complexity change? How about space complexity?
 
-        // Your code here 
+        let newHead = null;
+        let current = this.head;
+
+        while(current){
+            let next = current.next;
+            current.next = newHead;
+            newHead = current;
+            current = next;
+        }
+
+        return new SinglyLinkedList(newHead)
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -85,7 +118,18 @@ class SinglyLinkedList {
     reverseInPlace() {
         // Reverses the linked list in-place
 
-        // Your code here 
+        let prev = null;
+        let current = this.head;
+
+        while(current){
+            let next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        this.head = prev;
+
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -127,15 +171,15 @@ class DoublyLinkedList {
         // Implement this as a singly linked list then as a doubly linked list
             // How do the implementation for singly and doubly vary if at all?
 
-        // Your code here 
-        
+        // Your code here
+
         // Write your hypothesis on the time complexity of this method here
     }
 
     reverse() {
         // Returns a new reversed version of the linked list
 
-        // Your code here 
+        // Your code here
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -143,7 +187,7 @@ class DoublyLinkedList {
     reverseInPlace() {
         // Reverses the linked list in-place
 
-        // Your code here 
+        // Your code here
 
         // Write your hypothesis on the time complexity of this method here
     }
