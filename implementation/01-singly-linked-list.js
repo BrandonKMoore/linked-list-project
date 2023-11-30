@@ -58,8 +58,22 @@ class SinglyLinkedList {
 
     removeFromTail() {
         // Remove node at tail
+        if (!this.head) return undefined
 
-        // Your code here 
+        let current = this.head
+        let prev = null
+
+        while (current.next) {
+            prev = current
+            current = current.next
+        }
+
+        if (prev) prev.next = null
+        else this.head = null
+
+        this.length--
+        return current
+        
 
         // Write your hypothesis on the time complexity of this method here
     }
