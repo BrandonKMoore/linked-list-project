@@ -167,27 +167,48 @@ class DoublyLinkedList {
     }
 
     findMid() {
-        // Returns the middle node
-        // Implement this as a singly linked list then as a doubly linked list
-            // How do the implementation for singly and doubly vary if at all?
+        let slow = this.head
+        let fast = this.head
 
-        // Your code here
-
-        // Write your hypothesis on the time complexity of this method here
+        while (fast.next && fast.next.next) {
+            slow = slow.next
+            fast = fast.next.next
+        }
+        return slow
     }
 
     reverse() {
         // Returns a new reversed version of the linked list
 
-        // Your code here
+       let newHead = null
+       let current = this.head
 
+       while(current) {
+        let prev = current.prev
+        current.prev = current.next
+        current.next = prev
+        newHead = current
+        current = current.prev
+       }
+       return new DoublyLinkedList(newHead)
         // Write your hypothesis on the time complexity of this method here
     }
 
     reverseInPlace() {
         // Reverses the linked list in-place
 
-        // Your code here
+        let current = this.head
+
+        while(current) {
+            let prev = current.prev
+            current.prev = current.next
+            current.next = prev
+
+            if (!current.prev) {
+                this.head = current
+            }
+            current = current.prev
+        }
 
         // Write your hypothesis on the time complexity of this method here
     }
