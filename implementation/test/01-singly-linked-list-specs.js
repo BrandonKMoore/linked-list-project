@@ -1,4 +1,4 @@
-const { SinglyLinkedNode, SinglyLinkedList } = require('../01-singly-linked-list.js');
+const { SinglyLinkedNode, SinglyLinkedList } = require('../01-singly-linked-list');
 const { expect } = require('chai');
 
 const chai = require('chai');
@@ -8,7 +8,7 @@ chai.use(spies);
 
 describe('SinglyLinkedList', () => {
     let node;
-    let linkedList;
+    let linkedList; 
 
     beforeEach(() => {
         linkedList = new SinglyLinkedList();
